@@ -1,0 +1,29 @@
+{
+  "name": "js-data-structures",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nhedeker/js-data-structures.git"
+  },
+  "keywords": [],
+  "author": "Natasha Hedeker <natasha.hedeker@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nhedeker/js-data-structures/issues"
+  },
+  "homepage": "https://github.com/nhedeker/js-data-structures#readme",
+  "dependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.8.1",
+    "eslint-config-ryansobol": "^9.1.1"
+  }
+}
