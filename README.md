@@ -1,1 +1,4 @@
-# js-data-structures
+JavaScript Data Structures
+====================
+
+* Singly Linked List
