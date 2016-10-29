@@ -187,4 +187,29 @@ suite('Doubly Linked List', () => {
       assert.strictEqual(list.length, 0);
     });
   });
+
+  suite('Get', () => {
+    test('Gets a value from the list given an index', () => {
+      list.push(5).push(6).push(7).push(8).push(9);
+      assert.strictEqual(list.length, 5);
+      assert.strictEqual(list.get(3), 8);
+      assert.strictEqual(list.get(0), 5);
+      assert.strictEqual(list.get(2), 7);
+    });
+  });
+
+  suite('Set', () => {
+    test('Sets a value in the list given an index', () => {
+      list.push(3).push(4).push(5).push(6).push(7);
+      assert.strictEqual(list.length, 5);
+
+      list.set(4, 76);
+      assert.strictEqual(list.pop(), 76);
+
+      list.set(0, 67);
+      assert.strictEqual(list.shift(), 67);
+
+      assert.strictEqual(list.length, 3);
+    });
+  });
 });
