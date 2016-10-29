@@ -176,4 +176,15 @@ suite('Doubly Linked List', () => {
       assert.strictEqual(list.tail.prev.val, 3);
     });
   });
+
+  suite('Shift', () => {
+    test('Removes a value from the front of the list', () => {
+      list.push(4).push(2);
+      assert.strictEqual(list.length, 2);
+      assert.strictEqual(list.shift(), 4);
+      assert.strictEqual(list.length, 1);
+      assert.strictEqual(list.shift(), 2);
+      assert.strictEqual(list.length, 0);
+    });
+  });
 });
