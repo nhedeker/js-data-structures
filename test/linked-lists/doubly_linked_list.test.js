@@ -63,4 +63,68 @@ suite('Doubly Linked List', () => {
       assert.strictEqual(list.length, 2);
     });
   });
+
+  suite('Pop', () => {
+    test('Returns undefined when called on an empty list', () => {
+      assert.isUndefined(list.pop());
+    });
+
+    test('Returns the value at the end of the list', () => {
+      list.push(5).push(6).push(7).push(8);
+      assert.strictEqual(list.pop(), 8);
+      assert.strictEqual(list.pop(), 7);
+      assert.strictEqual(list.pop(), 6);
+      assert.strictEqual(list.pop(), 5);
+      assert.isUndefined(list.pop());
+    });
+
+    test('Properly updates the length', () => {
+      list.push(5).push(6).push(7).push(8);
+
+      list.pop();
+      assert.strictEqual(list.length, 3);
+
+      list.pop();
+      assert.strictEqual(list.length, 2);
+
+      list.pop();
+      assert.strictEqual(list.length, 1);
+
+      list.pop();
+      assert.strictEqual(list.length, 0);
+
+      list.pop();
+      assert.strictEqual(list.length, 0);
+    });
+
+    test('Properly updates the tail', () => {
+      list.push(5).push(6).push(7).push(8);
+
+      list.pop();
+      assert.strictEqual(list.tail.val, 7);
+      assert.strictEqual(list.tail.prev.val, 6);
+
+      list.pop();
+      assert.strictEqual(list.tail.val, 6);
+      assert.strictEqual(list.tailprev.val, 5);
+
+      list.pop();
+      assert.strictEqual(list.tail.val, 5);
+      assert.isNull(list.tail.prev);
+
+      list.pop();
+      assert.isNull(list.tail);
+    });
+
+    test('Properly updates the head', () => {
+      list.push(1).push(2);
+      assert.strictEqual(list.head.val, 1);
+
+      list.pop();
+      assert.strictEqual(list.head.val, 1);
+
+      list.pop();
+      assert.isNull(list.head);
+    });
+  });
 });
