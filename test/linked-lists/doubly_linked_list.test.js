@@ -212,4 +212,17 @@ suite('Doubly Linked List', () => {
       assert.strictEqual(list.length, 3);
     });
   });
+
+  suite('Remove', () => {
+    test('Removes a value in the list given an index', () => {
+      list.push(1).push(2).push(3).push(4).push(5);
+      assert.strictEqual(list.length, 5);
+      assert.strictEqual(list.remove(2), 3);
+      assert.strictEqual(list.length, 4);
+      assert.strictEqual(list.remove(0), 1);
+      assert.strictEqual(list.length, 3);
+      assert.strictEqual(list.remove(1), 4);
+      assert.strictEqual(list.length, 2);
+    });
+  });
 });
