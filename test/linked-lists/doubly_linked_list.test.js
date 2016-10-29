@@ -106,7 +106,7 @@ suite('Doubly Linked List', () => {
 
       list.pop();
       assert.strictEqual(list.tail.val, 6);
-      assert.strictEqual(list.tailprev.val, 5);
+      assert.strictEqual(list.tail.prev.val, 5);
 
       list.pop();
       assert.strictEqual(list.tail.val, 5);
