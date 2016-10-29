@@ -14,7 +14,7 @@ suite('Queue', () => {
 
   test('Queue initializes as empty', () => {
     assert.strictEqual(queue.size(), 0);
-    assert.isUndefined(queue.dequeue);
+    assert.isUndefined(queue.dequeue());
   });
 
   test('Can enqueue and dequeue a single item', () => {
@@ -36,7 +36,7 @@ suite('Queue', () => {
     assert.strictEqual(queue.dequeue(), 'Item 2');
     assert.strictEqual(queue.dequeue(), 'Item 3');
 
-    assert.isUndefined(queue.dequeue);
+    assert.isUndefined(queue.dequeue());
     assert.strictEqual(queue.size(), 0);
   });
 });
