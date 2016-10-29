@@ -127,4 +127,53 @@ suite('Doubly Linked List', () => {
       assert.isNull(list.head);
     });
   });
+
+  suite('Unshift', () => {
+    test('Properly updates the length', () => {
+      assert.strictEqual(list.length, 0);
+
+      list.unshift(5);
+      assert.strictEqual(list.length, 1);
+
+      list.unshift(8);
+      assert.strictEqual(list.length, 2);
+
+      list.unshift(2);
+      assert.strictEqual(list.length, 3);
+    });
+
+    test('Properly updates the head', () => {
+      list.unshift(6);
+      assert.strictEqual(list.head.val, 6);
+      assert.isNull(list.head.next);
+      assert.isNull(list.head.prev);
+
+      list.unshift(1);
+      assert.strictEqual(list.head.val, 1);
+      assert.strictEqual(list.head.next.val, 6);
+      assert.isNull(list.head.prev);
+
+      list.unshift(9);
+      assert.strictEqual(list.head.val, 9);
+      assert.strictEqual(list.head.next.val, 1);
+      assert.isNull(list.head.prev);
+    });
+
+    test('Properly updates the tail', () => {
+      list.unshift(4);
+      assert.strictEqual(list.tail.val, 4);
+      assert.isNull(list.tail.next);
+      assert.isNull(list.tail.prev);
+
+      list.unshift(3);
+      assert.strictEqual(list.tail.val, 4);
+      assert.isNull(list.tail.next);
+      assert.strictEqual(list.tail.prev.val, 3);
+
+      list.unshift(8);
+      assert.strictEqual(list.tail.val, 4);
+      assert.isNull(list.tail.next);
+      assert.strictEqual(list.tail.prev.val, 3);
+    });
+  });
 });
