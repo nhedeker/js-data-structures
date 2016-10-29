@@ -225,4 +225,23 @@ suite('Doubly Linked List', () => {
       assert.strictEqual(list.length, 2);
     });
   });
+
+  suite('Insert', () => {
+    test('Inserts a value into the list given an index', () => {
+      list.insert(0, 5);
+      assert.strictEqual(list.length, 1);
+      assert.strictEqual(list.get(0), 5);
+
+      // 5, 4, 2, 3
+      list.push(2).push(3).insert(1, 4);
+      assert.strictEqual(list.length, 4);
+      assert.strictEqual(list.get(0), 5);
+      assert.strictEqual(list.get(1), 4);
+      assert.strictEqual(list.get(2), 2);
+
+      list.insert(4, 7);
+      assert.strictEqual(list.get(4), 7);
+      assert.strictEqual(list.get(3), 3);
+    });
+  });
 });
