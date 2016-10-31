@@ -101,4 +101,53 @@ suite('Binary Tree', () => {
       });
     });
   });
+
+  suite('Size', () => {
+    test('Returns size of the tree', () => {
+      binTree = new BinaryTree();
+      [10, 4, 2, 9, 24, 44, 85].forEach((element) => {
+        binTree.insert(element);
+      });
+      assert.strictEqual(binTree.size(), 7);
+
+      binTree.insert(52);
+      assert.strictEqual(binTree.size(), 8);
+
+      binTree.insert(-3);
+      binTree.insert(21);
+      assert.strictEqual(binTree.size(), 10);
+    });
+  });
+
+  suite('Find Lowest', () => {
+    test('Returns lowest value in tree', () => {
+      binTree = new BinaryTree();
+      [54, 2, 89, -27, -1, 0, 10].forEach((element) => {
+        binTree.insert(element);
+      });
+      assert.strictEqual(binTree.findLowest(), -27);
+
+      binTree.insert(-28);
+      assert.strictEqual(binTree.findLowest(), -28);
+
+      binTree.insert(-100);
+      assert.strictEqual(binTree.findLowest(), -100);
+    });
+  });
+
+  suite('Find Highest', () => {
+    test('Returns highest value in tree', () => {
+      binTree = new BinaryTree();
+      [35, 7, 46, -1, 99, 0, -10].forEach((element) => {
+        binTree.insert(element);
+      });
+      assert.strictEqual(binTree.findHighest(), 99);
+
+      binTree.insert(100);
+      assert.strictEqual(binTree.findHighest(), 100);
+
+      binTree.insert(234);
+      assert.strictEqual(binTree.findHighest(), 234);
+    });
+  });
 });
