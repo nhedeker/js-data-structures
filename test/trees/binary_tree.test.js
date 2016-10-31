@@ -150,4 +150,92 @@ suite('Binary Tree', () => {
       assert.strictEqual(binTree.findHighest(), 234);
     });
   });
+
+  suite('Remove', () => {
+    test('Does not remove values not in the tree', () => {
+      binTree = new BinaryTree();
+      [7, 3, 9, 8, 5, 1, 99, 44, 33, 66].forEach((element) => {
+        binTree.insert(element);
+      });
+      assert.strictEqual(binTree.remove(100), 'Value not found');
+    });
+
+    test('Removes leaf nodes', () => {
+      binTree = new BinaryTree();
+      binTree.insert(7);
+      binTree.remove(7);
+      assert.deepEqual(binTree.dFSInOrder(), []);
+
+      [7, 3, 9, 8, 5, 1, 99, 44, 33, 66].forEach((element) => {
+        binTree.insert(element);
+      });
+      binTree.remove(1);
+      assert.deepEqual(binTree.dFSInOrder(), [3, 5, 7, 8, 9, 33, 44, 66, 99]);
+    });
+
+    test('Removes a node with 1 child on the left', () => {
+      binTree = new BinaryTree();
+      binTree.insert(50);
+      binTree.insert(20);
+      binTree.insert(55);
+      binTree.insert(54);
+      binTree.remove(55);
+      assert.strictEqual(binTree.root.val, 50);
+      assert.strictEqual(binTree.root.right.val, 54);
+      assert.strictEqual(binTree.root.left.val, 20);
+      assert.isNull(binTree.root.right.right);
+    });
+
+    test('Removes a node with 1 child on the right', () => {
+      binTree = new BinaryTree();
+      binTree.insert(50);
+      binTree.insert(20);
+      binTree.insert(21);
+      binTree.insert(54);
+      binTree.remove(20);
+      assert.strictEqual(binTree.root.val, 50);
+      assert.strictEqual(binTree.root.right.val, 54);
+      assert.strictEqual(binTree.root.left.val, 21);
+      assert.isNull(binTree.root.left.left);
+    });
+
+    test('Removes a node with two children', () => {
+      binTree = new BinaryTree();
+      [7, 3, 9, 8, 5, 1, 99, 44, 33, 66].forEach((element) => {
+        binTree.insert(element);
+      });
+      binTree.remove(3);
+      assert.deepEqual(binTree.dFSInOrder(), [1, 5, 7, 8, 9, 33, 44, 66, 99]);
+    });
+
+    test('Removes root node correctly when the root has a child', () => {
+      binTree = new BinaryTree();
+      binTree.insert(7);
+      binTree.insert(10);
+      binTree.remove(7);
+      assert.deepEqual(binTree.dFSInOrder(), [10]);
+    });
+
+    test('Removes root node properly when the root has two children', () => {
+      binTree = new BinaryTree();
+      [7, 3, 9, 8, 5, 1, 99, 44, 33, 66].forEach((element) => {
+        binTree.insert(element);
+      });
+      binTree.remove(7);
+      assert.deepEqual(binTree.dFSInOrder(), [1, 3, 5, 8, 9, 33, 44, 66, 99]);
+    });
+
+    // eslint-disable-next-line max-len
+    test('Properly removes with 2 children and the right child doesn\'t have any left children', () => {
+      binTree = new BinaryTree();
+      binTree.insert(25);
+      binTree.insert(10);
+      binTree.insert(27);
+      binTree.insert(28);
+      binTree.remove(25);
+      assert.strictEqual(binTree.root.val, 27);
+      assert.strictEqual(binTree.root.left.val, 10);
+      assert.strictEqual(binTree.root.right.val, 28);
+    });
+  });
 });
