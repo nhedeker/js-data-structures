@@ -65,12 +65,12 @@ suite('Binary Tree', () => {
   });
 
   suite('Breadth First Search', () => {
-    test('should search left to right', () => {
+    test('Properly searches', () => {
       binTree = new BinaryTree();
       [5, 2, 6, 8, 23, 56, 11].forEach((element) => {
         binTree.insert(element);
       });
-      assert.deepEqual(binTree.breadthFirstSearch(), [5, 2, 6, 8, 11, 23, 56]);
+      assert.deepEqual(binTree.breadthFirstSearch(), [5, 2, 6, 8, 23, 11, 56]);
     });
   });
 
