@@ -85,7 +85,7 @@ suite('Binary Tree', () => {
 
     suite('Pre-order', () => {
       test('Properly searches', () => {
-        assert.deepEqual(binTree.dFSPreOrder(), [4, 1, 7, 3, 98, 74, 32]);
+        assert.deepEqual(binTree.dFSPreOrder(), [4, 1, 3, 7, 98, 74, 32]);
       });
     });
 
