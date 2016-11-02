@@ -5,3 +5,4 @@ JavaScript Data Structures
 * Doubly Linked List
 * Queue
 * Stack
+* Binary Tree
