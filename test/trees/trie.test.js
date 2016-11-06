@@ -73,4 +73,28 @@ suite('Trie', () => {
       assert.deepEqual(trie.find('beg'), expected);
     });
   });
+
+  suite('Get Words', () => {
+    test('Returns an empty array if no words in trie', () => {
+      assert.deepEqual(trie.getWords(), []);
+    });
+
+    test('When one word in trie returns the correct word', () => {
+      trie.learn('begin');
+      assert.deepEqual(trie.getWords(), ['begin']);
+    });
+
+    test('When multiple words in trie returns all words properly', () => {
+      trie.learn('begin');
+      trie.learn('start');
+      assert.deepEqual(trie.getWords(), ['begin', 'start']);
+
+      trie.learn('began');
+      assert.deepEqual(trie.getWords(), ['begin', 'start', 'began']);
+
+      trie.learn('beginner');
+      assert.deepEqual(trie.getWords(),
+        ['begin', 'start', 'began', 'beginner']);
+    });
+  });
 });
