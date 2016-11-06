@@ -41,5 +41,17 @@ suite('Trie', () => {
 
       assert.isTrue(nChar);
     });
+
+    test('Learns a prefix of a word', () => {
+      trie.learn('begin');
+      trie.learn('be');
+      const eChar = trie.characters.b.characters.e;
+
+      assert.isTrue(eChar.isWord);
+
+      const nChar = eChar.characters.g.characters.i.characters.n;
+
+      assert.isTrue(nChar.isWord);
+    });
   });
 });
