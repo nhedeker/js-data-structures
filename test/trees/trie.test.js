@@ -54,4 +54,10 @@ suite('Trie', () => {
       assert.isTrue(nChar.isWord);
     });
   });
+
+  suite('Find', () => {
+    test('Returns undefined for a nonexistent string', () => {
+      assert.isUndefined(trie.find('nope'));
+    });
+  });
 });
