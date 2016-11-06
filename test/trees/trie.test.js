@@ -20,14 +20,26 @@ suite('Trie', () => {
       assert.isNotNull(bChar);
       assert.isNotNaN(bChar);
       assert.isDefined(bChar);
-      assert.isNotOk(bChar.isWord);
+      assert.isFalse(bChar.isWord);
 
       const eChar = bChar.characters.e;
 
       assert.isNotNaN(eChar);
       assert.isDefined(eChar);
-      assert.isOk(eChar.isWord);
+      assert.isTrue(eChar.isWord);
       assert.deepEqual(eChar.characters, {});
+    });
+
+    test('Learns an extension of a word', () => {
+      trie.learn('be');
+      trie.learn('begin');
+      const eChar = trie.characters.b.characters.e;
+
+      assert.isTrue(eChar.isWord);
+
+      const nChar = eChar.characters.g.characters.i.characters.n;
+
+      assert.isTrue(nChar);
     });
   });
 });
