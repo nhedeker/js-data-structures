@@ -106,5 +106,9 @@ suite('Trie', () => {
       trie.learn('begin');
       trie.learn('beginner');
     });
+
+    test('Returns an empty array when no completetions', () => {
+      assert.deepEqual(trie.autoComplete('a'), []);
+    });
   });
 });
