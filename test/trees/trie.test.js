@@ -120,5 +120,12 @@ suite('Trie', () => {
       assert.deepEqual(trie.autoComplete('bega'), ['began']);
       assert.deepEqual(trie.autoComplete('beginner'), ['beginn']);
     });
+
+    test('Returns many completetions for a prefix', () => {
+      assert.deepEqual(trie.autoComplete('be'),
+        ['be', 'began', 'begin', 'beginner']);
+      assert.deepEqual(trie.autoComplete('beg'),
+        ['began', 'begin', 'beginner']);
+    });
   });
 });
