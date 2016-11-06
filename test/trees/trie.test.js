@@ -59,5 +59,10 @@ suite('Trie', () => {
     test('Returns undefined for a nonexistent string', () => {
       assert.isUndefined(trie.find('nope'));
     });
+
+    test('Returns the correct character given a single character', () => {
+      trie.learn('begin');
+      assert.deepEqual(trie.find('b'), trie.characters.b);
+    });
   });
 });
