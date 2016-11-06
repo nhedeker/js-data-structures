@@ -110,5 +110,10 @@ suite('Trie', () => {
     test('Returns an empty array when no completetions', () => {
       assert.deepEqual(trie.autoComplete('a'), []);
     });
+
+    test('Returns a completetion for a whole word', () => {
+      assert.deepEqual(trie.autoComplete('began'), ['began']);
+      assert.deepEqual(trie.autoComplete('beginner'), ['beginner']);
+    });
   });
 });
