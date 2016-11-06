@@ -97,4 +97,14 @@ suite('Trie', () => {
         ['begin', 'start', 'began', 'beginner']);
     });
   });
+
+  suite('Auto Complete', () => {
+    // eslint-disable-next-line no-undef
+    beforeEach(() => {
+      trie.learn('be');
+      trie.learn('began');
+      trie.learn('begin');
+      trie.learn('beginner');
+    });
+  });
 });
