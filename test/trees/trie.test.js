@@ -64,5 +64,13 @@ suite('Trie', () => {
       trie.learn('begin');
       assert.deepEqual(trie.find('b'), trie.characters.b);
     });
+
+    test('Returns the last node for a given word', () => {
+      trie.learn('begin');
+      trie.learn('began');
+      const expected = trie.characters.b.characters.e.characters.g;
+
+      assert.deepEqual(trie.find('beg'), expected);
+    });
   });
 });
