@@ -17,16 +17,11 @@ suite('Trie', () => {
       trie.learn('be');
       const bChar = trie.characters.b;
 
-      assert.isNotNull(bChar);
-      assert.isNotNaN(bChar);
-      assert.isDefined(bChar);
-      assert.isFalse(bChar.isWord);
+      assert.isOk(bChar);
 
       const eChar = bChar.characters.e;
 
-      assert.isNotNaN(eChar);
-      assert.isDefined(eChar);
-      assert.isTrue(eChar.isWord);
+      assert.isOk(eChar);
       assert.deepEqual(eChar.characters, {});
     });
 
@@ -39,7 +34,7 @@ suite('Trie', () => {
 
       const nChar = eChar.characters.g.characters.i.characters.n;
 
-      assert.isTrue(nChar);
+      assert.isOk(nChar);
     });
 
     test('Learns a prefix of a word', () => {
