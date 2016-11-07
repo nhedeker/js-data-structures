@@ -89,7 +89,7 @@ suite('Trie', () => {
 
       trie.learn('beginner');
       assert.deepEqual(trie.getWords(),
-        ['begin', 'began', 'beginner', 'start']);
+        ['begin', 'beginner', 'began', 'start']);
     });
   });
 
