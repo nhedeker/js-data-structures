@@ -113,7 +113,7 @@ suite('Trie', () => {
 
     test('Returns a single completetion for a prefix', () => {
       assert.deepEqual(trie.autoComplete('bega'), ['began']);
-      assert.deepEqual(trie.autoComplete('beginner'), ['beginn']);
+      assert.deepEqual(trie.autoComplete('beginn'), ['beginner']);
     });
 
     test('Returns many completetions for a prefix', () => {
