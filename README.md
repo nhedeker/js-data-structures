@@ -6,3 +6,4 @@ JavaScript Data Structures
 * Queue
 * Stack
 * Binary Tree
+* Trie
