@@ -5,10 +5,49 @@ const { assert } = require('chai');
 const { suite, test } = require('mocha');
 
 suite('Undirected Weighted Graph', () => {
-  let graph;
+  let cityGraph;
 
-  // eslint-disable-next-line no-undef
   beforeEach(() => {
-    graph = new Graph();
+    cityGraph = new Graph();
+  });
+
+  suite('Add Vertex', () => {
+
+  });
+
+  suite('Add Edge', () => {
+
+  });
+
+  suite('Size', () => {
+
+  });
+
+  suite('Num Edges', () => {
+
+  });
+
+  suite('Weight', () => {
+
+  });
+
+  suite('Find Neighbors', () => {
+
+  });
+
+  suite('Find Orphans', () => {
+
+  });
+
+  suite('Find Path', () => {
+
+  });
+
+  suite('Path Weight', () => {
+
+  });
+
+  suite('Print', () => {
+
   });
 });
