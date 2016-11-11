@@ -12,7 +12,22 @@ suite('Undirected Weighted Graph', () => {
   });
 
   suite('Add Vertex', () => {
+    test('Properly adds a single vertex to a new graph', () => {
+      cityGraph.addVertex('Chicago');
+      assert.strictEqual(cityGraph.vertices[0], 'Chicago');
+    });
 
+    test('Properly adds a single vertex to a graph containing vertices', () => {
+      cityGraph.addVertex('Chicago');
+      cityGraph.addVertex('Seattle');
+      cityGraph.addVertex('Denver');
+      assert.deepEqual(cityGraph.vvertices, ['Chicago', 'Seattle', 'Denver']);
+    });
+
+    test('Properly chains', () => {
+      cityGraph.addVertex('Chicago').addVertex('Seattle').addVertex('Denver');
+      assert.deepEqual(cityGraph.vvertices, ['Chicago', 'Seattle', 'Denver']);
+    });
   });
 
   suite('Add Edge', () => {
