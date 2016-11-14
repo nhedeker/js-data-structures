@@ -101,7 +101,22 @@ suite('Undirected Weighted Graph', () => {
   });
 
   suite('Num Edges', () => {
+    test('Properly returns number of edges in graph', () => {
+      cityGraph.addVertex('Chicago');
+      cityGraph.addVertex('Seattle');
+      cityGraph.addVertex('Denver');
 
+      assert.strictEqual(cityGraph.numEdges(), 0);
+
+      cityGraph.addEdge('Chicago', 'Seattle', 4);
+      assert.strictEqual(cityGraph.numEdges(), 1);
+
+      cityGraph.addEdge('Chicago', 'Denver', 5);
+      assert.strictEqual(cityGraph.numEdges(), 2);
+
+      cityGraph.addEdge('Denver', 'Seattle', 6);
+      assert.strictEqual(cityGraph.numEdges(), 3);
+    });
   });
 
   suite('Weight', () => {
