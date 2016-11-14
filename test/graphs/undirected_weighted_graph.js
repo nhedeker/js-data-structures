@@ -120,7 +120,22 @@ suite('Undirected Weighted Graph', () => {
   });
 
   suite('Weight', () => {
+    test('Properly returns the total weight of all edges in graph', () => {
+      cityGraph.addVertex('Chicago');
+      cityGraph.addVertex('Seattle');
+      cityGraph.addVertex('Denver');
 
+      assert.strictEqual(cityGraph.weight(), 0);
+
+      cityGraph.addEdge('Chicago', 'Seattle', 4);
+      assert.strictEqual(cityGraph.weight(), 4);
+
+      cityGraph.addEdge('Chicago', 'Denver', 5);
+      assert.strictEqual(cityGraph.weight(), 9);
+
+      cityGraph.addEdge('Denver', 'Seattle', 6);
+      assert.strictEqual(cityGraph.weight(), 15);
+    });
   });
 
   suite('Find Neighbors', () => {
