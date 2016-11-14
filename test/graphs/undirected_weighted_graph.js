@@ -86,7 +86,18 @@ suite('Undirected Weighted Graph', () => {
   });
 
   suite('Size', () => {
+    test('Properly returns number of vertices in graph', () => {
+      assert.strictEqual(cityGraph.size(), 0);
 
+      cityGraph.addVertex('Chicago');
+      assert.strictEqual(cityGraph.size(), 1);
+
+      cityGraph.addVertex('Seattle');
+      assert.strictEqual(cityGraph.size(), 2);
+
+      cityGraph.addVertex('Denver');
+      assert.strictEqual(cityGraph.size(), 3);
+    });
   });
 
   suite('Num Edges', () => {
