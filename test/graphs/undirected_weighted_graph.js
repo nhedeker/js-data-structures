@@ -139,7 +139,46 @@ suite('Undirected Weighted Graph', () => {
   });
 
   suite('Find Neighbors', () => {
+    beforeEach(() => {
+      cityGraph.addVertex('Chicago');
+      cityGraph.addVertex('Seattle');
+      cityGraph.addVertex('Denver');
+    });
+    test('Returns [] when no vertices are connected', () => {
+      assert.deepEqual(cityGraph.findNeighbors('Chicago'), []);
+      assert.deepEqual(cityGraph.findNeighbors('Seattle'), []);
+      assert.deepEqual(cityGraph.findNeighbors('Denver'), []);
+    });
 
+    // eslint-disable-next-line max-len
+    test('Properly returns all vertices when all vertices are connected', () => {
+      cityGraph.addEdge('Chicago', 'Seattle', 4);
+      assert.deepEqual(cityGraph.findNeighbors('Chicago'), ['Seattle']);
+
+      cityGraph.addEdge('Chicago', 'Denver', 5);
+      cityGraph.addEdge('Denver', 'Seattle', 6);
+
+      assert.include(cityGraph.findNeighbors('Chicago'), 'Seattle');
+      assert.include(cityGraph.findNeighbors('Chicago'), 'Denver');
+
+      assert.include(cityGraph.findNeighbors('Seattle'), 'Chicago');
+      assert.include(cityGraph.findNeighbors('Seattle'), 'Denver');
+
+      assert.include(cityGraph.findNeighbors('Denver'), 'Chicago');
+      assert.include(cityGraph.findNeighbors('Denver'), 'Seattle');
+    });
+
+    // eslint-disable-next-line max-len
+    test('Properly all vertices connected to a given vertex while not all vertices are connected', () => {
+      cityGraph.addEdge('Chicago', 'Seattle', 4);
+      cityGraph.addEdge('Chicago', 'Denver', 5);
+
+      assert.include(cityGraph.findNeighbors('Denver'), 'Chicago');
+      assert.notInclude(cityGraph.findNeighbors('Denver'), 'Seattle');
+
+      assert.include(cityGraph.findNeighbors('Seattle'), 'Chicago');
+      assert.notInclude(cityGraph.findNeighbors('Seattle'), 'Denver');
+    });
   });
 
   suite('Find Orphans', () => {
