@@ -195,8 +195,9 @@ suite('Undirected Weighted Graph', () => {
       assert.strictEqual(cityGraph.findOrphans()[0], 'Denver');
     });
 
-    test('Finds multiple orphan vertices', => {
+    test('Finds multiple orphan vertices', () => {
       const orphans = cityGraph.findOrphans();
+
       assert.strictEqual(orphans.length, 3);
       assert.include(orphans, 'Denver');
       assert.include(orphans, 'Chicago');
@@ -205,6 +206,7 @@ suite('Undirected Weighted Graph', () => {
 
     test('Properly finds orphans after graph is updated', () => {
       let orphans = cityGraph.findOrphans();
+
       assert.strictEqual(orphans.length, 3);
       assert.include(orphans, 'Denver');
       assert.include(orphans, 'Chicago');
