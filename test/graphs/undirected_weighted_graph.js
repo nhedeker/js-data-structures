@@ -182,7 +182,40 @@ suite('Undirected Weighted Graph', () => {
   });
 
   suite('Find Orphans', () => {
+    beforeEach(() => {
+      cityGraph.addVertex('Chicago');
+      cityGraph.addVertex('Seattle');
+      cityGraph.addVertex('Denver');
+    });
 
+    test('Finds a single vertex not connected to any other vertex', () => {
+      cityGraph.addEdge('Chicago', 'Seattle', 4);
+
+      assert.strictEqual(cityGraph.findOrphans().length, 1);
+      assert.strictEqual(cityGraph.findOrphans()[0], 'Denver');
+    });
+
+    test('Finds multiple orphan vertices', => {
+      const orphans = cityGraph.findOrphans();
+      assert.strictEqual(orphans.length, 3);
+      assert.include(orphans, 'Denver');
+      assert.include(orphans, 'Chicago');
+      assert.include(orphans, 'Seattle');
+    });
+
+    test('Properly finds orphans after graph is updated', () => {
+      let orphans = cityGraph.findOrphans();
+      assert.strictEqual(orphans.length, 3);
+      assert.include(orphans, 'Denver');
+      assert.include(orphans, 'Chicago');
+      assert.include(orphans, 'Seattle');
+
+      cityGraph.addEdge('Chicago', 'Seattle', 4);
+
+      orphans = cityGraph.findOrphans();
+      assert.strictEqual(orphans.length, 1);
+      assert.strictEqual(orphans[0], 'Denver');
+    });
   });
 
   suite('Find Path', () => {
