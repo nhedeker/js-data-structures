@@ -225,7 +225,44 @@ suite('Undirected Weighted Graph', () => {
   });
 
   suite('Path Weight', () => {
+    beforeEach(() => {
+      cityGraph.addVertex('Chicago');
+      cityGraph.addVertex('Seattle');
+      cityGraph.addVertex('Denver');
+      cityGraph.addVertex('New York');
 
+      cityGraph.addEdge('Chicago', 'Seattle', 4);
+      cityGraph.addEdge('Chicago', 'New York', 8);
+      cityGraph.addEdge('New York', 'Denver', 10);
+    });
+
+    test('Calculates weight of a path with one edge', () => {
+      let path = cityGraph.findPath('Chicago', 'Seattle');
+
+      assert.strictEqual(cityGraph.pathWeight(path), 4);
+
+      path = cityGraph.findPath('Chicago', 'New York');
+
+      assert.strictEqual(cityGraph.pathWeight(path), 8);
+
+      path = cityGraph.findPath('New York', 'Denver');
+
+      assert.strictEqual(cityGraph.pathWeight(path), 10);
+    });
+
+    test('Calculates weight of a path with multiple edges', () => {
+      let path = cityGraph.findPath('Seattle', 'New York');
+
+      assert.strictEqual(cityGraph.pathWeight(path), 12);
+
+      path = cityGraph.findPath('Seattle', 'Denver');
+
+      assert.strictEqual(cityGraph.pathWeight(path), 22);
+
+      path = cityGraph.findPath('Chicago', 'Denver');
+
+      assert.strictEqual(cityGraph.pathWeight(path), 18);
+    });
   });
 
   suite('Print', () => {
