@@ -1,6 +1,6 @@
 'use strict';
 
-require('../../lib/graphs/undirected_weighted_graph');
+const Graph = require('../../lib/graphs/undirected_weighted_graph');
 const { assert } = require('chai');
 const { suite, test } = require('mocha');
 
@@ -221,7 +221,44 @@ suite('Undirected Weighted Graph', () => {
   });
 
   suite('Find Path', () => {
+    beforeEach(() => {
+      cityGraph.addVertex('Chicago');
+      cityGraph.addVertex('Seattle');
+      cityGraph.addVertex('Denver');
+      cityGraph.addVertex('New York');
 
+      cityGraph.addEdge('Chicago', 'Seattle', 4);
+      cityGraph.addEdge('Chicago', 'New York', 8);
+      cityGraph.addEdge('New York', 'Denver', 10);
+    });
+
+    test('Finds & returns the shortest path with one edge', () => {
+      const path = cityGraph.findPath('Chicago', 'Seattle');
+
+      assert.strictEqual(path.length, 1);
+      assert.strictEqual(path[0].first, 'Chicago');
+      assert.strictEqual(path[0].second, 'Seattle');
+    });
+
+    test('Finds & returns the shortest path with multiple edge', () => {
+      const path = cityGraph.findPath('Seattle', 'New York');
+
+      assert.strictEqual(path.length, 2);
+      assert.strictEqual(path[0].first, 'Chicago');
+      assert.strictEqual(path[0].second, 'Seattle');
+      assert.strictEqual(path[1].first, 'Chicago');
+      assert.strictEqual(path[1].second, 'New York');
+    });
+
+    test('Finds & returns the shortest path with multiple edge options', () => {
+      cityGraph.addEdge('Seattle', 'Denver', 12);
+
+      const path = cityGraph.findPath('Seattle', 'Denver');
+
+      assert.strictEqual(path.length, 1);
+      assert.strictEqual(path[0].first, 'Seattle');
+      assert.strictEqual(path[0].second, 'Denver');
+    });
   });
 
   suite('Path Weight', () => {
