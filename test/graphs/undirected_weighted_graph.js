@@ -43,25 +43,25 @@ suite('Undirected Weighted Graph', () => {
 
     test('Properly adds a single edge to a new graph', () => {
       cityGraph.addEdge('Chicago', 'Seattle', 4);
-      assert.strictEqual(cityGraph.edges[0].first, 'Chicago');
-      assert.strictEqual(cityGraph.edges[0].second, 'Seattle');
+      assert.strictEqual(cityGraph.edges[0].first.val, 'Chicago');
+      assert.strictEqual(cityGraph.edges[0].second.val, 'Seattle');
       assert.strictEqual(cityGraph.edges[0].weight, 4);
     });
 
     test('Properly adds a single edge to a graph containing edges', () => {
       cityGraph.addEdge('Chicago', 'Seattle', 4);
-      assert.strictEqual(cityGraph.edges[0].first, 'Chicago');
-      assert.strictEqual(cityGraph.edges[0].second, 'Seattle');
+      assert.strictEqual(cityGraph.edges[0].first.val, 'Chicago');
+      assert.strictEqual(cityGraph.edges[0].second.val, 'Seattle');
       assert.strictEqual(cityGraph.edges[0].weight, 4);
 
       cityGraph.addEdge('Chicago', 'Denver', 5);
-      assert.strictEqual(cityGraph.edges[1].first, 'Chicago');
-      assert.strictEqual(cityGraph.edges[1].second, 'Denver');
+      assert.strictEqual(cityGraph.edges[1].first.val, 'Chicago');
+      assert.strictEqual(cityGraph.edges[1].second.val, 'Denver');
       assert.strictEqual(cityGraph.edges[1].weight, 5);
 
       cityGraph.addEdge('Denver', 'Seattle', 6);
-      assert.strictEqual(cityGraph.edges[2].first, 'Denver');
-      assert.strictEqual(cityGraph.edges[2].second, 'Seattle');
+      assert.strictEqual(cityGraph.edges[2].first.val, 'Denver');
+      assert.strictEqual(cityGraph.edges[2].second.val, 'Seattle');
       assert.strictEqual(cityGraph.edges[2].weight, 6);
     });
 
@@ -71,16 +71,16 @@ suite('Undirected Weighted Graph', () => {
         .addEdge('Chicago', 'Denver', 5)
         .addEdge('Denver', 'Seattle', 6);
 
-      assert.strictEqual(cityGraph.edges[0].first, 'Chicago');
-      assert.strictEqual(cityGraph.edges[0].second, 'Seattle');
+      assert.strictEqual(cityGraph.edges[0].first.val, 'Chicago');
+      assert.strictEqual(cityGraph.edges[0].second.val, 'Seattle');
       assert.strictEqual(cityGraph.edges[0].weight, 4);
 
-      assert.strictEqual(cityGraph.edges[1].first, 'Chicago');
-      assert.strictEqual(cityGraph.edges[1].second, 'Denver');
+      assert.strictEqual(cityGraph.edges[1].first.val, 'Chicago');
+      assert.strictEqual(cityGraph.edges[1].second.val, 'Denver');
       assert.strictEqual(cityGraph.edges[1].weight, 5);
 
-      assert.strictEqual(cityGraph.edges[2].first, 'Denver');
-      assert.strictEqual(cityGraph.edges[2].second, 'Seattle');
+      assert.strictEqual(cityGraph.edges[2].first.val, 'Denver');
+      assert.strictEqual(cityGraph.edges[2].second.val, 'Seattle');
       assert.strictEqual(cityGraph.edges[2].weight, 6);
     });
   });
@@ -236,18 +236,18 @@ suite('Undirected Weighted Graph', () => {
       const path = cityGraph.findPath('Chicago', 'Seattle');
 
       assert.strictEqual(path.length, 1);
-      assert.strictEqual(path[0].first, 'Chicago');
-      assert.strictEqual(path[0].second, 'Seattle');
+      assert.strictEqual(path[0].first.val, 'Chicago');
+      assert.strictEqual(path[0].second.val, 'Seattle');
     });
 
     test('Finds & returns the shortest path with multiple edge', () => {
       const path = cityGraph.findPath('Seattle', 'New York');
 
       assert.strictEqual(path.length, 2);
-      assert.strictEqual(path[0].first, 'Chicago');
-      assert.strictEqual(path[0].second, 'Seattle');
-      assert.strictEqual(path[1].first, 'Chicago');
-      assert.strictEqual(path[1].second, 'New York');
+      assert.strictEqual(path[0].first.val, 'Chicago');
+      assert.strictEqual(path[0].second.val, 'Seattle');
+      assert.strictEqual(path[1].first.val, 'Chicago');
+      assert.strictEqual(path[1].second.val, 'New York');
     });
 
     test('Finds & returns the shortest path with multiple edge options', () => {
@@ -256,8 +256,8 @@ suite('Undirected Weighted Graph', () => {
       const path = cityGraph.findPath('Seattle', 'Denver');
 
       assert.strictEqual(path.length, 1);
-      assert.strictEqual(path[0].first, 'Seattle');
-      assert.strictEqual(path[0].second, 'Denver');
+      assert.strictEqual(path[0].first.val, 'Seattle');
+      assert.strictEqual(path[0].second.val, 'Denver');
     });
   });
 
